@@ -39,6 +39,21 @@
         {% endblock %}
     </head>
     <body class="antialiased">
+    <header>
+        <div class="container mx-auto px-4 py-6 flex justify-between items-center">
+            <a href="/" class="text-2xl font-bold text-sunset-orange">
+                Hollyday
+            </a>
+            <nav>
+             
+            {% if app.user %}
+                <a href="{{ path('app_logout') }}" class="btn-primary">Logout</a>
+            {% endif %}
+
+            </nav>
+        </div>
+
+    </header>
         {% block body %}{% endblock %}
         
         {% block javascripts %}

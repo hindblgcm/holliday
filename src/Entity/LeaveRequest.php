@@ -16,7 +16,7 @@ class LeaveRequest
     private ?int $id = null;
 
     #[ORM\ManyToOne(inversedBy: 'leaveRequests')]
-    private ?User $_user = null;
+    private ?User $user = null;
 
     #[ORM\Column(type: Types::DATETIME_MUTABLE)]
     private ?\DateTimeInterface $startDate = null;
@@ -37,12 +37,12 @@ class LeaveRequest
 
     public function getUser(): ?User
     {
-        return $this->_user;
+        return $this->user;
     }
 
-    public function setUser(?User $_user): static
+    public function setUser(?User $user): static
     {
-        $this->_user = $_user;
+        $this->user = $user;
 
         return $this;
     }

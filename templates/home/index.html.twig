@@ -1,58 +1,73 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hollyday - Your Vacation Companion{% endblock %}
-   
+{% block title %}Hollyday - Your Vacation Companion
+{% endblock %}
+
 {% block body %}
-<div class="min-h-screen bg-sandy-beige/10 flex flex-col">
-    <div class="container mx-auto px-4 py-16 flex-grow">
-        <div class="max-w-4xl mx-auto text-center">
-            <h1 class="text-5xl font-bold mb-6 text-sunset-orange">
-                Welcome to Hollyday 🏖️
-            </h1>
-            
-            <div class="card mb-8">
-                <p class="text-xl text-gray-700 mb-6">
-                    Plan, explore, and cherish your perfect vacation moments with Hollyday.
-                </p>
-                
-           
-            </div>
-            
-            <div class="grid md:grid-cols-3 gap-6">
-                <div class="card bg-sunny-yellow/10 border-sunny-yellow/30">
-                    <h2 class="text-2xl font-semibold text-sunset-orange mb-4">
-                        Plan Trips
-                    </h2>
-                    <p class="text-gray-600">
-                        Create and manage your vacation itineraries with ease.
-                    </p>
-                </div>
-                
-                <div class="card bg-tropical-green/10 border-tropical-green/30">
-                    <h2 class="text-2xl font-semibold text-sunset-orange mb-4">
-                        Explore Destinations
-                    </h2>
-                    <p class="text-gray-600">
-                        Discover new and exciting travel destinations.
-                    </p>
-                </div>
-                
-                <div class="card bg-ocean-blue/10 border-ocean-blue/30">
-                    <h2 class="text-2xl font-semibold text-sunset-orange mb-4">
-                        Share Memories
-                    </h2>
-                    <p class="text-gray-600">
-                        Capture and share your unforgettable vacation moments.
-                    </p>
-                </div>
-            </div>
-        </div>
-    </div>
-    
-    <footer class="bg-sunset-orange/10 py-6 text-center">
-        <p class="text-gray-600">
-            © {{ "now"|date("Y") }} Hollyday. All rights reserved.
-        </p>
-    </footer>
-</div>
+	<div class="min-h-screen bg-sandy-beige/10 flex flex-col">
+		<div class="container mx-auto px-4 py-16 flex-grow">
+			<div class="max-w-4xl mx-auto text-center">
+				<h1 class="text-5xl font-bold mb-6 text-sunset-orange">
+					Welcome to Hollyday 🏖️
+				</h1>
+
+				<div class="card mb-8">
+					<p class="text-xl text-gray-700 mb-6">
+						Plan, explore, and cherish your perfect vacation moments with Hollyday.
+					</p>
+				</div>
+
+
+			</div>
+			<div class="max-w-3xl mx-auto bg-white rounded-lg shadow-lg p-12">
+				<h2 class="text-3xl font-bold mb-6 text-sunset-orange">
+					Plan Your Trip
+				</h2>
+
+				{{ form_start(form, {'attr': {'class': 'space-y-6'}}) }}
+					<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+						<div class="form-group">
+							{{ form_label(form.startDate, 'Start Date', {'label_attr': {'class': 'block text-sm font-medium text-gray-700'}}) }}
+							<div class="mt-1">
+								{{ form_widget(form.startDate, {'attr': {'class': 'block w-full rounded-md border-gray-300 shadow-sm focus:border-sunset-orange focus:ring focus:ring-sunset-orange/50'}}) }}
+								{{ form_errors(form.startDate) }}
+							</div>
+						</div>
+
+						<div class="form-group">
+							{{ form_label(form.endDate, 'End Date', {'label_attr': {'class': 'block text-sm font-medium text-gray-700'}}) }}
+							<div class="mt-1">
+								{{ form_widget(form.endDate, {'attr': {'class': 'block w-full rounded-md border-gray-300 shadow-sm focus:border-sunset-orange focus:ring focus:ring-sunset-orange/50'}}) }}
+								{{ form_errors(form.endDate) }}
+							</div>
+						</div>
+					</div>
+
+					<div class="form-group mt-6">
+						{{ form_label(form.reason, 'Trip Reason', {'label_attr': {'class': 'block text-sm font-medium text-gray-700'}}) }}
+						<div class="mt-1">
+							{{ form_widget(form.reason, {'attr': {'class': 'block w-full rounded-md border-gray-300 shadow-sm focus:border-sunset-orange focus:ring focus:ring-sunset-orange/50 h-24', 'placeholder': 'Tell us about your dream vacation...'}}) }}
+							{{ form_errors(form.reason) }}
+						</div>
+					</div>
+
+					
+
+					<div class="mt-8">
+						{{ form_widget(form.submit, {'attr': {'class': 'w-full bg-sunset-orange text-white py-3 px-4 rounded-md hover:bg-sunset-orange/90 transition-colors duration-300 ease-in-out'}}) }}
+					</div>
+
+					{{ form_rest(form) }}
+			</div>
+		</div>
+		
+
+		<footer class="bg-sunset-orange/10 py-6 text-center">
+			<p class="text-gray-600">
+				©
+				{{ "now"|date("Y") }}
+				Hollyday. All rights reserved.
+			</p>
+		</footer>
+	</div>
 {% endblock %}
