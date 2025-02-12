@@ -60,7 +60,34 @@
 					{{ form_rest(form) }}
 			</div>
 		</div>
-		
+		<div class="container mx-auto px-4 py-16 flex-grow">
+			<div class="max-w-4xl mx-auto text-center">
+				<h2 class="text-3xl font-bold mb-6 text-sunset-orange">
+					Leave Requests
+				</h2>
+				<table class="min-w-full bg-white rounded-lg shadow-lg">
+					<thead>
+						<tr>
+							<th class="py-2 px-4 bg-sunset-orange text-white">Start Date</th>
+							<th class="py-2 px-4 bg-sunset-orange text-white">End Date</th>
+							<th class="py-2 px-4 bg-sunset-orange text-white">Reason</th>	
+							<th class="py-2 px-4 bg-sunset-orange text-white">Status</th>
+						</tr>
+					</thead>
+					<tbody>
+						{% for leaveRequest in leaveRequests %}
+							<tr>
+								<td class="py-2 px-4">{{ leaveRequest.startDate|date('Y-m-d') }}</td>
+								<td class="py-2 px-4">{{ leaveRequest.endDate|date('Y-m-d') }}</td>
+								<td class="py-2 px-4">{{ leaveRequest.reason }}</td>
+								<td class="py-2 px-4">{{ leaveRequest.status.value }}</td>
+							</tr>
+						{% endfor %}
+					</tbody>
+				</table>
+			</div>
+		</div>
+
 
 		<footer class="bg-sunset-orange/10 py-6 text-center">
 			<p class="text-gray-600">
