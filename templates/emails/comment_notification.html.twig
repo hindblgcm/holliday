@@ -1,0 +1,14 @@
+{% extends '@email/default/notification/body.html.twig' %}
+{% block content %}
+  Author: {{ leaverequest.author }}<br />
+  Email: {{ leaverequest.email }}<br />
+  State: {{ leaverequest.state }}<br />
+  <p>
+    {{ leaverequest.text }}
+  </p>
+{% endblock %}
+{% block action %}
+  <spacer size="16"></spacer>
+  <button href="{{ url('review_leaverequest', { id: leaverequest.id }) }}">Accept</button>
+  <button href="{{ url('review_leaverequest', { id: leaverequest.id, reject: true }) }}">Reject</button>
+{% endblock %}

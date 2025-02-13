@@ -28,7 +28,7 @@ class LeaveRequest
     private ?string $reason = null;
 
     #[ORM\Column(enumType: StatusEnum::class)]
-    private ?StatusEnum $status = null;
+    private ?StatusEnum $status = StatusEnum::draft;
 
     public function getId(): ?int
     {
@@ -91,6 +91,19 @@ class LeaveRequest
     public function setStatus(StatusEnum $status): static
     {
         $this->status = $status;
+
+        return $this;
+    }
+    //pour que le workflow fonctionne correctement, on doit ajouter une méthode pour récupérer la valeur de la propriété status en tant que chaîne de caractères
+
+    public function getStatusAsString(): string
+    {
+        return $this->status->value;
+    }
+
+    public function setStatusAsString(string $status): static
+    {
+        $this->status = StatusEnum::from($status);
 
         return $this;
     }
