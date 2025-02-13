@@ -1,10 +1,10 @@
 {% extends '@email/default/notification/body.html.twig' %}
 {% block content %}
-  Author: {{ leaverequest.author }}<br />
-  Email: {{ leaverequest.email }}<br />
-  State: {{ leaverequest.state }}<br />
+  Author: {{ leaverequest.user.email }}<br />
+  Email: {{ leaverequest.user.email }}<br />
+  State: {{ leaverequest.status.value }}<br />
   <p>
-    {{ leaverequest.text }}
+    {{ leaverequest.reason }}
   </p>
 {% endblock %}
 {% block action %}

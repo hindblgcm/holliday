@@ -29,19 +29,20 @@ final class LeaverequestMessageHandler
             return;
         }
         if($this->leaveRequestStateMachine->can($leaveRequest, 'submit')){
+            $this->mailer->send((new NotificationEmail())
+            ->subject('New leave request submitted')
+            ->htmlTemplate('emails/leaverequest_notification.html.twig')
+            ->from($this->adminEmail)
+            ->to($this->adminEmail)
+            ->context(['leaverequest' => $leaveRequest])
+   );
             $this->leaveRequestStateMachine->apply($leaveRequest, 'submit');
         }
         else{
             throw new \Exception('Leave request cannot be submitted');
         }
 
-        $this->mailer->send((new NotificationEmail())
-                        ->subject('New leave request submitted')
-                        ->htmlTemplate('emails/leaverequest_notification.html.twig')
-                        ->from($this->adminEmail)
-                        ->to($this->adminEmail)
-                        ->context(['leaverequest' => $leaveRequest])
-               );
+      
         $this->entityManager->flush();
     }
 }
