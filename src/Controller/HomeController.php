@@ -29,7 +29,6 @@ final class HomeController extends AbstractController
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
             $leaveRequest->setUser($this->getUser());
-            
             $entityManager->persist($leaveRequest);
             $entityManager->flush();
             $messageBus->dispatch(new LeaverequestMessage($leaveRequest->getId()));

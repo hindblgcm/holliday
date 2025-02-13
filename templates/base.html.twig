@@ -1,67 +1,70 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="UTF-8">
-        <title>{% block title %}Welcome!{% endblock %}</title>
-        <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⛱️</text></svg>">
-        {# Run `composer require symfony/webpack-encore-bundle` to start using Symfony UX #}
-        {% block stylesheets %}
-            <script src="https://cdn.tailwindcss.com"></script>
-            <script>
-                tailwind.config = {
-                    theme: {
-                        extend: {
-                            colors: {
-                                'sunny-yellow': '#FFC857',    // Warm sunshine yellow
-                                'sandy-beige': '#F6BD60',     // Sand-like beige
-                                'sunset-orange': '#F07167',   // Sunset orange
-                                'ocean-blue': '#1CA3EC',      // Bright vacation ocean blue
-                                'tropical-green': '#2EC4B6'   // Tropical greenish-teal
-                            },
-                            fontFamily: {
-                                'sans': ['system-ui', 'Helvetica', 'Arial', 'sans-serif']
-                            }
-                        }
-                    }
-                }
-            </script>
-            <style>
-                body {
-                    @apply bg-sandy-beige/10 text-gray-800;
-                }
-                .btn-primary {
-                    @apply bg-sunset-orange text-white px-4 py-2 rounded-lg hover:bg-sunset-orange/80 transition-colors;
-                }
-                .card {
-                    @apply bg-white shadow-md rounded-lg p-6 border border-gray-100;
-                }
-            </style>
-       
-            
-            {# Font Awesome #}
-            <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
-        {% endblock %}
-    </head>
-    <body class="antialiased">
-    <header>
-        <div class="container mx-auto px-4 py-6 flex justify-between items-center">
-            <a href="/" class="text-2xl font-bold text-sunset-orange">
-                Hollyday
-            </a>
-            <a href="{{ path('admin') }}" class="btn-primary">Admin</a>
-            <nav>
-             
-            {% if app.user %}
-                <a href="{{ path('app_logout') }}" class="btn-primary">Logout</a>
-            {% endif %}
+	<head>
+		<meta charset="UTF-8">
+		<title>
+			{% block title %}Welcome!
+			{% endblock %}
+		</title>
+		<link
+		rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⛱️</text></svg>">
+		{# Run `composer require symfony/webpack-encore-bundle` to start using Symfony UX #}
+		{% block stylesheets %}
+			 <script src="https://cdn.tailwindcss.com"></script>
+			 <script>
+			                tailwind.config = {
+			                    theme: {
+			                        extend: {
+			                            colors: {
+			                                'sunny-yellow': '#FFC857',    // Warm sunshine yellow
+			                                'sandy-beige': '#F6BD60',     // Sand-like beige
+			                                'sunset-orange': '#F07167',   // Sunset orange
+			                                'ocean-blue': '#1CA3EC',      // Bright vacation ocean blue
+			                                'tropical-green': '#2EC4B6'   // Tropical greenish-teal
+			                            },
+			                            fontFamily: {
+			                                'sans': ['system-ui', 'Helvetica', 'Arial', 'sans-serif']
+			                            }
+			                        }
+			                    }
+			                }
+			            </script>
+				<style>
+body {
+	@apply bg-sandy-beige / 10 text-gray-800;
+}
+.btn-primary {
+	@apply bg-sunset-orange text-white px-4 py-2 rounded-lg hover: bg-sunset-orange / 80 transition-colors;
+}
+.card {
+	@apply bg-white shadow-md rounded-lg p-6 border border-gray-100;
+}
+			</style>
 
-            </nav>
-        </div>
 
-    </header>
-        {% block body %}{% endblock %}
-        
-        {% block javascripts %}
-        {% endblock %}
-    </body>
+			{# Font Awesome #}
+		<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet"> {% endblock %}
+	</head>
+	<body class="antialiased">
+		<header>
+			<div class="container mx-auto px-4 py-6 flex justify-between items-center">
+				<a href="/" class="text-2xl font-bold text-sunset-orange">
+					Hollyday
+				</a>
+
+				<nav>
+
+					{% if app.user %}
+						<a href="{{ path('admin') }}" class="btn-primary">Admin</a>
+						<a href="{{ path('app_logout') }}" class="btn-primary">Logout</a>
+					{% endif %}
+
+				</nav>
+			</div>
+
+		</header>
+		{% block body %}{% endblock %}
+
+		{% block javascripts %}{% endblock %}
+	</body>
 </html>

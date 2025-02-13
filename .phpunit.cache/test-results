@@ -1,0 +1,1 @@
+{"version":1,"defects":{"App\\Tests\\HomeControllerTest::testSomething":7,"App\\Tests\\HomeControllerTest::testIndex":8,"App\\Tests\\HomeControllerTest::testLeaveRequest":7},"times":{"App\\Tests\\HomeControllerTest::testSomething":0.101,"App\\Tests\\HomeControllerTest::testIndex":0.148,"App\\Tests\\HomeControllerTest::testLeaveRequest":0.093}}

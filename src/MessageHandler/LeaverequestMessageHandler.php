@@ -2,7 +2,6 @@
 
 namespace App\MessageHandler;
 
-use App\Entity\Enum\StatusEnum;
 use App\Message\LeaverequestMessage;
 use Doctrine\ORM\EntityManagerInterface;
 use App\Repository\LeaveRequestRepository;
